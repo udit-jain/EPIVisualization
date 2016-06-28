@@ -1,1 +1,139 @@
-Hello World!
+<html>
+<head>
+<title>Highcharts Tutorial</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="http://code.highcharts.com/highcharts.js"></script>  
+  <script src="http://code.highcharts.com/highcharts-more.js"></script>  
+  <script src="http://code.highcharts.com/maps/modules/map.js"></script>
+  <script src="http://code.highcharts.com/modules/no-data-to-display.js"></script>
+
+  <script src="https://code.highcharts.com/maps/highmaps.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/data.js"></script>
+  <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+  <script src="http://www.highcharts.com/studies/world-map-shapes.js"></script>
+
+  <!-- Flag sprites service provided by Martijn Lafeber, https://github.com/lafeber/world-flags-sprite/blob/master/LICENSE -->
+  <link rel="stylesheet" type="text/css" href="https://cloud.github.com/downloads/lafeber/world-flags-sprite/flags32.css" />
+
+  <!-- Select2 Files https://select2.github.io/ -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+  <!-- Udit's Local Files -->
+  <script type="text/javascript" src="LineChartData.js"></script>
+  <script type="text/javascript" src="WorldMapData.js"></script>
+  <script type="text/javascript" src="Visualization.js"></script>
+  <link href="mapstyle.css" rel="stylesheet"> 
+  <link href="style.css" rel="stylesheet"> 
+  <link rel="import" href="country_list.html">
+  <link rel="import" href="indicator_list.html">
+
+   
+</head>
+<body background="background-world-map.gif">
+
+<!-- <div w3-include-html="country_list.html"></div> -->
+<!-- <link rel="import" href="country_list.html" > -->
+
+<!-- World Map Chart -->
+<div id="MapContainer" style="width: 800px; height: 500px; margin: 0 auto">
+</div>
+
+
+<div id="map-input" class="map">
+
+  <div id = map-indicator>
+    <select multiple id="map_indicator_list" tabindex="-1" aria-hidden="true" style="width:300px">
+    <option value="ACCESS">Access to Electricity</option>
+    <option value="ACSAT">Unsafe Sanitation</option>
+    <option value="WATSUP">Unsafe Drinking Water</option>
+    <option value="NUESS3">Nitrogen Use Efficiency</option>
+    <option value="NBALANCE">Nitrogen Balance</option>
+    <option value="PSPW">Species Protection (Global)</option>
+    <option value="HAP">Household Air Quality</option>
+    <option value="PSPU">Species Protection (National)</option>
+    <option value="ERE3">Environmental Risk Exposure</option>
+    <option value="CO2GDPd1">Trend in Carbon Intensity</option>
+    <option value="CO2KWHd1">Trend in CO2 Emissions per KWH</option>
+    <option value="FORCH">Tree Cover Loss</option>
+    <option value="FSOCPEN">Fish Stocks</option>
+    <option value="MPAEEZ">Marine Protected Areas</option>
+    </select>
+  </div>
+
+  <div id=map-submit-button>
+    <input class="map" id='map_submit_button' type='submit' value='Generate Map Chart'/> 
+  </div>
+  
+</div>
+
+<!-- Line Chart -->
+<div id="LineContainer" style="width: 800px; height: 500px; margin: 0 auto"> </div>
+
+<!-- <div id="LineContainer" style="width: 800px; height: 600px; margin: 0 auto">
+</div> -->
+<div id="line-input" class="line">
+
+  <div id = line-countries>
+    <select multiple id="country_list" tabindex="-1" aria-hidden="true" style="width:300px">
+    <option value="Afghanistan">Afghanistan</option>
+    <option value="Angola">Angola</option>
+    <option value="Albania">Albania</option>
+    <option value="United Arab Emirates">United Arab Emirates</option>
+    <option value="Argentina">Argentina</option>
+    <option value="Armenia">Armenia</option>
+    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+    </select>
+  </div>  
+
+  <div id = line-indicator>
+    <select multiple id="line_indicator_list" tabindex="-1" aria-hidden="true" style="width:300px">
+    <option value="ACCESS">Access to Electricity</option>
+    <option value="ACSAT">Unsafe Sanitation</option>
+    <option value="WATSUP">Unsafe Drinking Water</option>
+    <option value="NUESS3">Nitrogen Use Efficiency</option>
+    <option value="NBALANCE">Nitrogen Balance</option>
+    <option value="PSPW">Species Protection (Global)</option>
+    <option value="HAP">Household Air Quality</option>
+    <option value="PSPU">Species Protection (National)</option>
+    <option value="ERE3">Environmental Risk Exposure</option>
+    <option value="CO2GDPd1">Trend in Carbon Intensity</option>
+    <option value="CO2KWHd1">Trend in CO2 Emissions per KWH</option>
+    <option value="FORCH">Tree Cover Loss</option>
+    <option value="FSOCPEN">Fish Stocks</option>
+    <option value="MPAEEZ">Marine Protected Areas</option>
+    </select>
+  </div>
+
+  <div id="line-input" class="line">
+              <input class="line" id='line_submit_button' type='submit' value='Generate Line Chart'/>
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+  $("#map_indicator_list").select2(
+  {
+    maximumSelectionLength: 1,
+    width: '380px'
+  });
+  $("#country_list").select2(
+  {
+    maximumSelectionLength: 10,
+    width: '380px'
+  });
+  $("#line_indicator_list").select2(
+  {
+    maximumSelectionLength: 1,
+    width: '380px'
+  });
+ runViz();
+</script>
+
+
+
+
+</body>
+</html>
