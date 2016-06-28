@@ -1,0 +1,12 @@
+.text_c{
+    text-align: center;
+}
+.main{
+    position: relative;
+    width:80%;
+    left: 50%;
+    margin-left: -40%;
+}
+.geo_map{
+    border:2px black dashed;
+}
